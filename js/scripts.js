@@ -1,7 +1,7 @@
-var PingPong = function (number) {
+var pingPong = function (number) {
   var numberArray = [];
   for (var i = 1; i <= number; i++) {
-    if (i %3 === 0 ) && i % 5 === 0) {
+    if (i % 3 === 0 && i % 5 === 0) {
       numberArray.push("pingpong");
     }
     else if (i % 5 === 0) {
@@ -9,9 +9,6 @@ var PingPong = function (number) {
     }
     else if (i % 3 === 0) {
       numberArray.push("ping");
-    }
-    else{
-      numberArray.push("push");
     }
     else {
       numberArray.push(i);
@@ -23,21 +20,23 @@ var PingPong = function (number) {
 $(document).ready(function() {
   $("form#userNumber").submit(function(event) {
 
-    var number = parseInt($("input#number").val());
-    if(number <= 0){
+   var number = parseInt($("input#number").val());
+    if (number <= 0){
       alert("Please enter a number greater than or equal to 1!");
     }
-    var returnedNumberArray = PingPong(number);
+    var returnedNumberArray = pingPong(number);
 
-    $("ul").empty();
+   $("ul").empty();
 
-    for (var i = 0; i < returnedNumberArray.length;i++) {
+   for (var i = 0; i < returnedNumberArray.length; i++) {
       var listItem = document.createElement("li");
-      var numberList = document.getElementById("Ping-Pong");
+      listItem.innerHTML = returnedNumberArray[i];
+      var numberList = document.getElementById("ping-pong");
+      numberList.appendChild(listItem);
     }
 
-    $("#result").show();
+   $("#result").show();
 
-    event.preventDefault();
+   event.preventDefault();
+
   });
-});
